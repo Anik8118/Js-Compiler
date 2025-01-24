@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript Compiler</title>
   <style>
-    /* Base styles shared across themes */
+
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
@@ -32,7 +32,7 @@
       font-size: 14px;
     }
 
-    /* Light mode styles */
+  
     @media (prefers-color-scheme: light) {
       body {
         background-color: #f0f0f0;
@@ -63,7 +63,6 @@
       }
     }
 
-    /* Dark mode styles */
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #121212;
@@ -111,27 +110,25 @@
     function runCode() {
       const code = document.getElementById('code').value;
       const outputElement = document.getElementById('output');
-      outputElement.textContent = ''; // Clear previous output
+      outputElement.textContent = ''; 
 
-      // Redirect console.log to output
+
       const originalConsoleLog = console.log;
       console.log = function (...args) {
         args.forEach(arg => {
           outputElement.textContent += arg + '\n';
         });
-        originalConsoleLog.apply(console, args); // Still log to the console
+        originalConsoleLog.apply(console, args); 
       };
 
       try {
-        const result = new Function(code)(); // Execute the JavaScript code
+        const result = new Function(code)(); 
         if (result !== undefined) {
-          outputElement.textContent += result + '\n'; // Display the result
+          outputElement.textContent += result + '\n'; 
         }
       } catch (error) {
-        outputElement.textContent += `Error: ${error.message}\n`; // Display any errors
+        outputElement.textContent += `Error: ${error.message}\n`; 
       }
-
-      // Restore original console.log after execution
       console.log = originalConsoleLog;
     }
   </script>
